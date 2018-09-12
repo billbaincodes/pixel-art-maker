@@ -1,18 +1,36 @@
-//pixel click
+// Builds the canvas
 let container = document.querySelector('.container')
 
-let chosenColor = ''
+for (var i = 0; i < 432; i++) {
+  let pixelSquare = document.createElement('div')
+  pixelSquare.setAttribute('class', 'pixSquare')
+  container.appendChild(pixelSquare)
+}
+
+//Colors the canvas
+var chosenColor = ''
 
 container.addEventListener("click", function(event) {
   event.target.style.backgroundColor = chosenColor
 })
 
-//color selection
+//Selects color
 let colors = document.querySelector('.colors')
 
 function handleColor (event) {
   chosenColor = event.target.classList[1]
-  console.log(event.target.classList[1])
+  currentColor.style.backgroundColor = chosenColor
 }
 
 colors.addEventListener("click", handleColor)
+
+
+//Handles the eraser
+let eraser = document.querySelector('.eraser')
+
+function erase () {
+    currentColor.style.backgroundColor = 'white'
+    chosenColor = 'white'
+}
+
+eraser.addEventListener('click', erase)
